@@ -1,0 +1,115 @@
+body {
+  background: var(--primary-color);
+  margin: 0;
+  padding: 0;
+  display: inline-block !important;
+}
+
+:root {
+  --primary-color: #ececee;
+  --dark-color: #2c2c2c;
+  --details-color: #a9acb1;
+  --green-button-color: #70c070;
+  --error-message-light: #dd8e8e;
+  --input-text-color: #757575;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.info_element_message {
+  position: absolute;
+  padding: 30px 50px 50px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: var(--input-text-color);
+}
+
+.container .rectangle {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  background: white;
+  border: 1px solid var(--details-color);
+  border-radius: 5px;
+  top: 30%;
+  left: 40%;
+}
+.container .rectangle .circle {
+  position: absolute;
+  height: 140px;
+  width: 140px;
+  border-radius: 140px;
+  left: 25%;
+  margin-top: -25%;
+  background: var(--details-color);
+}
+.container .rectangle .circle .logo_circle {
+  position: relative;
+  margin-top: 25%;
+  text-decoration: none;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+}
+.container .rectangle .login_message {
+  position: absolute;
+  text-align: center;
+  top: 73%;
+  width: 100%;
+  color: var(--input-text-color);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.container .rectangle .input_fields {
+  position: absolute;
+  top: 25%;
+  left: 18%;
+}
+.container .rectangle .input_fields ul li {
+  padding-bottom: 15px;
+}
+.container .rectangle .input_fields .input_field {
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  border: solid var(--primary-color);
+  font-size: 16px;
+  text-align: center;
+  font-weight: lighter;
+}
+.container .rectangle .login_button {
+  position: relative;
+  text-align: center;
+  top: 89%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container .rectangle .login_button .primary_cta {
+  background: var(--green-button-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 75px;
+  font-size: 16px;
+  border-width: 1px;
+}
+
+.form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+/*# sourceMappingURL=login.component.css.map */

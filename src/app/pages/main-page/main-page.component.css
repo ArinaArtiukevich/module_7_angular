@@ -1,0 +1,26 @@
+body {
+  background: var(--primary-color);
+  margin: 0;
+  padding: 0;
+  display: inline-block !important;
+}
+
+:root {
+  --primary-color: #ececee;
+  --dark-color: #2c2c2c;
+  --details-color: #a9acb1;
+  --green-button-color: #70c070;
+  --error-message-light: #dd8e8e;
+  --input-text-color: #757575;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+/*# sourceMappingURL=main-page.component.css.map */

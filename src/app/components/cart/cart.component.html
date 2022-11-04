@@ -1,0 +1,69 @@
+<div id="checkout" class="checkout">
+
+
+  <div class="container">
+    <form id="checkout_form">
+      <div *ngIf="isValid; else message">
+        <div class="head_container">
+          <div class="head_text"><p>Checkout</p></div>
+        </div>
+        <div id="checkout_message" class="info_element_message"></div>
+        <div class="border">
+
+          <div class="elements">
+            <ul class="elements_list" id="elements_list">
+              <li>
+                <div class="element">
+                  <ul *ngFor="let certificate of certificates">
+                    <li class="info_element">
+                      <div class="element_image">
+                        <img class="element_image_square" [src]="getImage(certificate.imagePath)"
+                             [alt]="certificate.name"/>
+                      </div>
+                    </li>
+                    <li class="info_element">
+                      <div class="element_information">
+                        <div class="element_title">
+                          <p><a [routerLink]="['/certificate', certificate?.id]">{{certificate.name}}</a></p>
+                        </div>
+                        <div class="element_description">
+                          <p>{{certificate.description}}</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="info_element">
+                      <div class="element_price"><p> {{certificate.price|currency:"BYN": "symbol"}}</p></div>
+                    </li>
+                    <li class="info_element">
+                      <div class="delete_item close_image" (click)="deleteFromCart(certificate)"></div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <div class="total_elements">
+              <ul>
+                <li class="elements_price"><p>Total</p></li>
+                <li class="elements_price"><p><span
+                  id="checkout_total_price">{{totalPrice|currency:"BYN": "symbol"}}</span></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="button_checkout">
+            <ul>
+              <li><a href="#" class="light_button">Back</a></li>
+              <li>
+                <button (click)="buyAll()" class="green_button">Checkout</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ng-template #message>
+        <div class="info_element_message">Please login or signup.</div>
+      </ng-template>
+    </form>
+  </div>
+</div>
+

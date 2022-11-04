@@ -1,0 +1,81 @@
+
+<div id="new_item">
+  <form id="new_item_form" (ngSubmit)="addCertificate()"
+        enctype="multipart/form-data" [formGroup]="addCertificateFormGroup">
+    <div class="container">
+      <div class="head_container">
+        <div class="head_text"><p>Add New Coupon</p></div>
+      </div>
+      <div id="new_item_message" class="new_item_message"></div>
+      <div class="border">
+        <div class="input_fields">
+          <div class="left_column">
+            <ul>
+              <li><label for="tag_name_input">Tag name</label>
+                <div class="input_field_long tag_container" id="tag_container">
+                  <input name="tag_name" id="tag_name_input" (keyup.space)="addTagToForm($event)" formControlName="tags" ngModel />
+                </div>
+              </li>
+              <li>
+                <label for="expire_in">Expires in</label>
+                <input type="text" id="expire_in" name="duration" class="input_field_long" placeholder="Expires in"
+                       formControlName="expire_in" ngModel>
+                <span
+                  *ngIf="(addCertificateFormGroup.get('expire_in')?.invalid && addCertificateFormGroup.get('expire_in')?.touched)"
+                  class="invalid-feedback">Invalid duration.
+                </span>
+              </li>
+              <li>
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price" class="input_field_long" formControlName="price" ngModel>
+                <span
+                  *ngIf="(addCertificateFormGroup.get('price')?.invalid && addCertificateFormGroup.get('price')?.touched)"
+                  class="invalid-feedback">Invalid price.
+                </span>
+              </li>
+
+            </ul>
+          </div>
+          <div class="right_column">
+            <ul>
+              <li>
+                <label for="coupon_name">Item Name</label>
+                <input type="text" id="coupon_name" name="name" class="input_field_long"  formControlName="name" ngModel>
+                <span
+                  *ngIf="(addCertificateFormGroup.get('name')?.invalid && addCertificateFormGroup.get('name')?.touched)"
+                  class="invalid-feedback">Invalid name.
+                </span>
+              </li>
+              <li>
+                <label for="brief_description">Description</label>
+                <input type="text" id="brief_description" name="description" class="input_field_long"
+                       required="required" formControlName="description" ngModel>
+                <span
+                  *ngIf="(addCertificateFormGroup.get('description')?.invalid && addCertificateFormGroup.get('description')?.touched)"
+                  class="invalid-feedback">Invalid description.
+                </span>
+              </li>
+              <li id="item_image">
+                <label for="image">Upload Image</label>
+                  <input type="file" accept="image/*" name="image" id="image" class="input_field_long"
+                       (change)="loadFile()">
+                <img id="output" width="200" alt="Image" style="display: none"/>
+
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="button">
+          <ul>
+            <li>
+              <button routerLink="/" class="light_button">Back</button>
+            </li>
+            <li>
+              <button type="submit" class="green_button" *ngIf="isAdmin">Save</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,71 @@
+<div id="coupons" class="coupons" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+     (scrolled)="onScroll()">
+  <div *ngIf="isValid; else message">
+    <div id="coupons_message" class="coupons_message"></div>
+    <ul id="coupons_list">
+
+      <li *ngFor="let certificate of certificates">
+        <div class="coupon">
+          <div class="image">
+            <img class="coupon_image" [src]="getImage(certificate.imagePath)"
+                 [alt]="certificate.name"/>
+          </div>
+          <div class="coupon_description">
+
+            <table class="coupon_info_table">
+              <tr>
+                <th>
+                  <div class="coupon_name"><a [routerLink]="['/certificate', certificate?.id]">
+                    {{certificate.name}}</a></div>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <div class="coupon_brief_description">{{certificate.description}}</div>
+                </th>
+                <th>
+                  <div class="expires_in_info">Expites in {{certificate.duration}}</div>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <div class="avarage_price">{{certificate.price| currency: 'BY' }}</div>
+                </th>
+                <th>
+                  <div class="add_to_cart_button">
+                    <a
+                      class="add_to_cart"
+                      (click)="addToCart(certificate)"
+                      [ngClass]="{'add_to_cart_disabled': getCertificates().indexOf(certificate.id ?? -1) !== -1}"
+                      *ngIf="getCertificates().indexOf(certificate.id ?? -1)
+                      === -1;">
+                      {{labelAdd}}
+                    </a>
+
+                    <a class="add_to_cart"
+                       (click)="deleteFromCart(certificate)"
+                       [ngClass]="{'add_to_cart_disabled': getCertificates().indexOf(certificate.id ?? -1) !== -1}"
+                       *ngIf="getCertificates().indexOf(certificate.id ?? -1)
+                      !== -1;">
+                      {{labelDelete}}
+                    </a>
+                  </div>
+                </th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <div class="spinner_container" *ngIf="loading">
+      <img class="spinner_img" src="../assets/spinner/Spinner-1.6s-201px.svg"/>
+    </div>
+
+  </div>
+
+  <ng-template #message>
+    <div class="info_element_message">Please login or signup.</div>
+  </ng-template>
+</div>

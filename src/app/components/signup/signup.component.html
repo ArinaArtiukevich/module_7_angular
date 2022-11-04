@@ -1,0 +1,67 @@
+<div id="registration">
+  <form id="register_form" #signupForm="ngForm" [formGroup]="signupFormGroup" (ngSubmit)="signupUser()">
+    <div class="container_registration">
+      <div class="rectangle_registration">
+        <div class="head_rectangle_registration">
+          <div class="head_text_registration">Register</div>
+        </div>
+        <div class="input_fields_registration">
+          <div class="left_column_registration">
+            <ul>
+              <li>
+                <label for="login_input">Login Name</label>
+                <input type="text" id="login_input" name="login" class="input_field_long_registration"
+                       formControlName="login" ngModel>
+                <span
+                  *ngIf="(signupFormGroup.get('login')?.invalid && signupFormGroup.get('login')?.touched)"
+                  class="invalid-feedback">Invalid login.
+                </span>
+              </li>
+
+              <li>
+                <label for="budget">Budget</label>
+                <input type="text" id="budget" name="budget" class="input_field_long_registration"
+                       formControlName="budget" ngModel>
+                <span
+                  *ngIf="(signupFormGroup.get('budget')?.invalid && signupFormGroup.get('budget')?.touched)"
+                  class="invalid-feedback">Invalid budget.
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="right_column_registration">
+            <ul>
+              <li>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="input_field_long_registration"
+                       formControlName="password" ngModel>
+                <span
+                  *ngIf="(signupFormGroup.get('password')?.invalid && signupFormGroup.get('password')?.touched)"
+                  class="invalid-feedback">Invalid password.
+                </span>
+              </li>
+              <li>
+                <label for="repeat_password">Repeat Password</label>
+                <input type="password" id="repeat_password" name="repeat_password" class="input_field_long_registration"
+                       (keyup)="checkPasswords()">
+                <span
+                  *ngIf="(!validPassword && signupFormGroup.get('password')?.touched)"
+                  class="invalid-feedback">Passwords do not match.
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div id="registration_message" class="registration_message">{{message}}</div>
+        </div>
+        <div class="button_registration">
+          <ul>
+            <li><a href="#" class="light_button_registration">Back</a></li>
+            <li>
+              <button type="submit" class="green_button_registration" [disabled]="signupForm.invalid">Sign Up</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
