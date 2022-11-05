@@ -1,0 +1,132 @@
+@import "../../../public/page/main-page/main-page.component";
+
+.container {
+  .user_field {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    margin-left: 2em;
+    position: relative;
+    color: var(--input-text-color);
+    font-weight: lighter;
+    padding: 10px;
+  }
+
+  .user_detail_info {
+    padding-left: 20px;
+  }
+
+  .user_elements_list {
+    margin-top: 30px;
+  }
+
+  .user_certificates_border {
+    width: 770px;
+  }
+
+}
+
+.border {
+  position: absolute;
+  top: 12%;
+  left: 23%;
+  margin-top: 100px;
+  padding: 40px;
+  width: 770px;
+
+  .button_checkout {
+    position: absolute;
+    text-align: center;
+    margin-left: 366px;
+    margin-top: 40px;
+
+    ul li {
+      display: inline;
+    }
+  }
+}
+
+.head_container {
+  background: var(--details-color);
+  height: 55px;
+  position: absolute;
+  width: 100%;
+
+  .head_text {
+    margin-left: 26%;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    font-weight: lighter;
+    padding: 13px;
+  }
+}
+
+.element_title {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--dark-color);
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.elements {
+  .element {
+    display: grid;
+
+    li {
+      font-size: 1.1em;
+      margin-bottom: 1em;
+      margin-left: 2em;
+      position: relative;
+    }
+
+    .element_image_square {
+      object-fit: contain;
+      height: 80px;
+      width: 80px;
+    }
+
+    .element_information {
+      height: 100px;
+      width: 400px;
+      position: relative;
+      top: -5px;
+
+      .element_description {
+        padding-top: 20px;
+        font-size: 16px;
+        font-weight: lighter;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    .info_element {
+      display: inline-block;
+    }
+
+    .element_price {
+      position: relative;
+      top: -30px;
+    }
+  }
+}
+
+.info_element_message {
+  position: absolute;
+  padding: 30px 50px 50px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: var(--input-text-color);
+}

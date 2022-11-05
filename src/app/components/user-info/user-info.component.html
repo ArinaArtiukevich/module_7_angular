@@ -1,64 +1,64 @@
-<div id="user_info" *ngIf="isValid; else user_info_message" xmlns="http://www.w3.org/1999/html">
-  <div class="container">
-    <div class="head_container">
-      <div class="head_text"><p>My account</p></div>
-    </div>
-    <div id="user_info_message" class="info_element_message"></div>
-    <div class="border">
-      <ul class="user_fields_list" id="user_fields_list">
-        <li id="user_login" class="user_field">Login: <span
-          class="element_title user_detail_info">{{user?.login}}</span>
-        </li>
-        <li id="user_budget" class="user_field">Budget: <span
-          class="element_title user_detail_info">{{user?.budget}}</span></li>
-        <li id="user_actions" class="user_field" *ngIf="user?.role === admin">
-          <ul>Actions:
-            <li><a [routerLink]="['/addCertificate']" class="element_title user_detail_info">Add certificate</a></li>
-            <li><a [routerLink]="['/addTag']" class="element_title user_detail_info">Add tag</a></li>
-          </ul>
-        </li>
+<!--<div id="user_info" *ngIf="isValid; else user_info_message" xmlns="http://www.w3.org/1999/html">-->
+<!--  <div class="container">-->
+<!--    <div class="head_container">-->
+<!--      <div class="head_text"><p>My account</p></div>-->
+<!--    </div>-->
+<!--    <div id="user_info_message" class="info_element_message"></div>-->
+<!--    <div class="border">-->
+<!--      <ul class="user_fields_list" id="user_fields_list">-->
+<!--        <li id="user_login" class="user_field">Login: <span-->
+<!--          class="element_title user_detail_info">{{user?.login}}</span>-->
+<!--        </li>-->
+<!--        <li id="user_budget" class="user_field">Budget: <span-->
+<!--          class="element_title user_detail_info">{{user?.budget}}</span></li>-->
+<!--        <li id="user_actions" class="user_field" *ngIf="user?.role === admin">-->
+<!--          <ul>Actions:-->
+<!--            <li><a [routerLink]="['/addCertificate']" class="element_title user_detail_info">Add certificate</a></li>-->
+<!--            <li><a [routerLink]="['/addTag']" class="element_title user_detail_info">Add tag</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
 
-        <li id="user_certificates" class="user_field user_certificates_border"
-            *ngIf="user && user.certificates.length !== 0">
-          Certificates:
-          <ul class="elements elements_list user_elements_list" id="user_certificates_list"
-              *ngFor="let certificate of user?.certificates">
-            <li>
-              <div class="element">
-                <ul>
-                  <li class="info_element">
-                    <div class="element_image">
-                      <img id="element_image" class="element_image_square" [src]="getImage(certificate.imagePath)"
-                           [alt]="certificate.name"/>
-                    </div>
-                  </li>
-                  <li class="info_element">
-                    <div class="element_information">
-                      <div class="element_title">
-                        <p><a [routerLink]="['/certificate', certificate?.id]">{{certificate.name}}
+<!--        <li id="user_certificates" class="user_field user_certificates_border"-->
+<!--            *ngIf="user && user.certificates.length !== 0">-->
+<!--          Certificates:-->
+<!--          <ul class="elements elements_list user_elements_list" id="user_certificates_list"-->
+<!--              *ngFor="let certificate of user?.certificates">-->
+<!--            <li>-->
+<!--              <div class="element">-->
+<!--                <ul>-->
+<!--                  <li class="info_element">-->
+<!--                    <div class="element_image">-->
+<!--                      <img id="element_image" class="element_image_square" [src]="getImage(certificate.imagePath)"-->
+<!--                           [alt]="certificate.name"/>-->
+<!--                    </div>-->
+<!--                  </li>-->
+<!--                  <li class="info_element">-->
+<!--                    <div class="element_information">-->
+<!--                      <div class="element_title">-->
+<!--                        <p><a [routerLink]="['/certificate', certificate?.id]">{{certificate.name}}-->
 
-                        </a></p>
-                      </div>
-                      <div class="element_description">
-                        <p>{{certificate.description}}</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="info_element">
-                    <div class="element_price"><p>{{certificate.price| currency: 'BY'}}</p></div>
-                  </li>
-                </ul>
-              </div>
-            </li>
+<!--                        </a></p>-->
+<!--                      </div>-->
+<!--                      <div class="element_description">-->
+<!--                        <p>{{certificate.description}}</p>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </li>-->
+<!--                  <li class="info_element">-->
+<!--                    <div class="element_price"><p>{{certificate.price|currency:"BYN": "symbol"}}</p></div>-->
+<!--                  </li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--            </li>-->
 
 
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
-<ng-template #user_info_message>
-  <div class="info_element_message">Please login or signup.</div>
-</ng-template>
+<!--<ng-template #user_info_message>-->
+<!--  <div class="info_element_message">Please login or signup.</div>-->
+<!--</ng-template>-->

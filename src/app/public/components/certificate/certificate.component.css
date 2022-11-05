@@ -1,0 +1,144 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.active {
+  bottom: 13%;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.coupon {
+  box-sizing: border-box;
+  text-align: left;
+  margin: 20px 34px;
+}
+.coupon .coupon_name {
+  font-weight: lighter;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+.coupon .coupon_name a {
+  text-decoration: none;
+  color: black;
+}
+
+.image .coupon_image {
+  height: 190px;
+  width: 220px;
+  object-fit: cover;
+}
+
+ul li {
+  display: inline-block;
+}
+
+.coupon_description {
+  box-sizing: border-box;
+  background: white;
+  height: 120px;
+  width: 220px;
+  padding: 12px;
+}
+.coupon_description .avarage_price {
+  padding-top: 10px;
+  font-weight: bolder;
+  font-size: 15px;
+}
+.coupon_description table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.coupon_description tr:nth-last-child(-n+2) {
+  border-bottom: 1px solid var(--details-color);
+}
+.coupon_description tr:last-child {
+  border: none;
+}
+
+.coupon_brief_description {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  font-weight: lighter;
+  font-size: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.expires_in_info {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  font-weight: lighter;
+  font-size: 8px;
+  color: var(--details-color);
+  float: right;
+}
+
+.coupon_favorite {
+  float: right;
+  margin-left: 60px;
+}
+
+.add_to_cart_button {
+  cursor: pointer;
+  box-sizing: border-box;
+  margin: 10px auto;
+  float: right;
+  width: 85px;
+  height: 25px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid var(--dark-color);
+}
+
+.coupon_info_table {
+  width: 160px;
+}
+
+.add_to_cart {
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--dark-color);
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.add_to_cart_disabled {
+  color: var(--details-color);
+}
+
+.coupons {
+  padding: 20px 50px 10px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.coupons ul li {
+  display: inline-block !important;
+}
+.coupons .coupons_message {
+  line-height: 60px;
+  height: 60px;
+  font-size: 16px;
+  color: var(--input-text-color);
+}
+
+.spinner_container {
+  position: fixed;
+  display: flex;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.spinner_img {
+  width: 200px;
+  height: 200px;
+}
+
+/*# sourceMappingURL=certificate.component.css.map */

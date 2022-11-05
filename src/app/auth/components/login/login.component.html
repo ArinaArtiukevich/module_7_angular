@@ -1,0 +1,36 @@
+<div id="login">
+  <form id="login_form" #loginForm="ngForm" [formGroup]="logForm" (ngSubmit)="loginUser()">
+
+    <div class="container">
+      <div class="rectangle">
+        <div class="circle">
+          <div class="logo_circle">Logo</div>
+        </div>
+        <div class="input_fields">
+          <ul>
+            <li><input type="text" id="login_input" name="login" class="input_field" placeholder="Login"
+                       formControlName="login" ngModel>
+              <span
+                *ngIf="(logForm.get('login')?.invalid && logForm.get('login')?.touched)"
+                class="invalid-feedback">Invalid login.</span>
+            </li>
+            <li><input type="password" id="password" name="password" class="input_field" placeholder="Password"
+                       formControlName="password" ngModel>
+              <span
+                *ngIf="(logForm.get('password')?.invalid && logForm.get('password')?.touched)"
+                class="invalid-feedback">Invalid password.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div id="login_message" class="login_message">{{message}}</div>
+        <div class="login_button">
+          <button type="submit" class="primary_cta" [disabled]="loginForm.invalid">Login</button>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+
+</div>

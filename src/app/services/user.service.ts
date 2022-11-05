@@ -77,6 +77,13 @@ export class UserService {
     return this.isLoggedIn;
   }
 
+  idUser(): number {
+    if (this.isUserLoggedIn()) {
+      return Number(sessionStorage.getItem(this.ID));
+    }
+    return -1;
+  }
+
   isUserAdmin() {
     let currentRole = sessionStorage.getItem(this.ROLE);
     return currentRole === this.ADMIN;
