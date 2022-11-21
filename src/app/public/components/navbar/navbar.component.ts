@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
-import {ShareNavBarRequestService} from "../../../services/share-nav-bar-request.service";
-import {UserService} from "../../../services/user.service";
+import {ShareNavBarRequestService} from "../../services/share-nav-bar-request.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-navbar',

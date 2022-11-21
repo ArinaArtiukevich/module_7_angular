@@ -1,10 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {Subscription} from "rxjs";
-import {Certificate} from "../../../models/certificate";
-import {CartService} from "../../../services/cart.service";
-import {CertificatesService} from "../../../services/certificates.service";
-import {UserService} from "../../../services/user.service";
-import {ActivatedRoute} from "@angular/router";
+import {Certificate} from "../../../public/models/certificate";
+import {CertificatesService} from "../../../public/services/certificates.service";
+import {UserService} from "../../../public/services/user.service";
+import {CurrentUserService} from "../../services/current-user.service";
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +17,7 @@ export class CartComponent implements OnInit {
   totalPrice: number;
   isValid: boolean;
 
-  constructor(private cartService: CartService,
+  constructor(private cartService: CurrentUserService,
               private certificatesService: CertificatesService,
               private userService: UserService) {
     this.eventSubscription = this.cartService.productList.subscribe(() => {
@@ -73,7 +72,8 @@ export class CartComponent implements OnInit {
     }
   }
 
-  buyAll() {
+  buyAll(event:any) {
+    event.preventDefault();
     this.cartService.buyAllCart();
   }
 }

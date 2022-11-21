@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {Subscription} from "rxjs";
-import {Certificate} from "../../../models/certificate";
+import {Certificate} from "../../../public/models/certificate";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CertificatesService} from "../../../services/certificates.service";
+import {CertificatesService} from "../../../public/services/certificates.service";
 import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../../services/user.service";
-import {Tag} from "../../../models/tag";
+import {UserService} from "../../../public/services/user.service";
+import {Tag} from "../../../public/models/tag";
+import {ItemService} from "../../services/item.service";
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {
@@ -38,7 +39,7 @@ export class FormCertificateComponent implements OnInit {
     }
   )
 
-  constructor(private certificateService: CertificatesService, private activateRoute: ActivatedRoute,
+  constructor(private certificateService: CertificatesService, private formService: ItemService, private activateRoute: ActivatedRoute,
               private userService: UserService) {
     this.isAdmin = this.userService.isUserAdmin();
 
@@ -198,7 +199,7 @@ export class FormCertificateComponent implements OnInit {
   }
 
   postCertificate(formData: FormData) {
-    this.certificateService.add(formData).subscribe(() => {
+    this.formService.addCertificate(formData).subscribe(() => {
         this.setMessage("Certificate was added.");
       }, error => {
         this.setMessage("Certificate was not added.");
@@ -207,7 +208,7 @@ export class FormCertificateComponent implements OnInit {
   }
 
   updateCertificate(formData: FormData) {
-    this.certificateService.patch(formData, this.idCertificate).subscribe(() => {
+    this.formService.patch(formData, this.idCertificate).subscribe(() => {
         this.setMessage("Certificate was updated.");
       }, error => {
         this.setMessage("Certificate was not updated.");

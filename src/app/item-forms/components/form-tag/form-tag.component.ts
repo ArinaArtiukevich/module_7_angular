@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {Subscription} from "rxjs";
-import {TagService} from "../../../services/tag.service";
-import {UserService} from "../../../services/user.service";
-import {Tag} from "../../../models/tag";
+import {TagService} from "../../../public/services/tag.service";
+import {UserService} from "../../../public/services/user.service";
+import {Tag} from "../../../public/models/tag";
+import {ItemService} from "../../services/item.service";
 
 @Component({
   selector: 'app-form-tag',
@@ -14,12 +15,8 @@ export class FormTagComponent implements OnInit {
   eventSubscription: Subscription;
   isAdmin: boolean;
 
-  constructor(private tagService: TagService, private userService: UserService) {
+  constructor(private tagService: ItemService, private userService: UserService) {
     this.isAdmin = this.userService.isUserAdmin();
-    this.eventSubscription = this.userService.isLoggedInSubject.subscribe(() => {
-      this.isAdmin = this.userService.isUserAdmin();
-      this.setMessage("You are not allowed to add a tag.");
-    })
   }
 
   ngOnInit(): void {
@@ -69,6 +66,16 @@ export class FormTagComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("new_tag_input_name")).value = "";
     (<HTMLInputElement>document.getElementById("tag_image")).value = "";
     (<HTMLInputElement>document.getElementById("tag_output")).style.display = "none";
+  }
+
+
+  ngAfterViewInit() {
+    this.eventSubscription = this.userService.isLoggedInSubject.subscribe(() => {
+      this.isAdmin = this.userService.isUserAdmin();
+      if (!this.isAdmin) {
+        this.setMessage("You are not allowed to add a tag.");
+      }
+    })
   }
 
   setMessage(value: string) {

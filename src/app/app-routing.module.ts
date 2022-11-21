@@ -1,26 +1,32 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-// import {MainPageComponent} from "./pages/main-page/main-page.component";
-// import {RegistrationComponent} from "./pages/registration/registration.component";
-import {UserPageComponent} from "./pages/user-page/user-page.component";
-import {CartPageComponent} from "./pages/cart-page/cart-page.component";
-import {CertificatePageComponent} from "./pages/certificate-page/certificate-page.component";
-// import {FormCertificateComponent} from "./components/form-certificate/form-certificate.component";
-// import {FormTagComponent} from "./components/form-tag/form-tag.component";
-// import {GlobalErrorComponent} from "./components/global-error/global-error.component";
+import {AuthComponent} from "./auth/auth.component";
+import {ItemFormsComponent} from "./item-forms/item-forms.component";
+import {UserComponent} from "./user/user.component";
+import {PublicComponent} from "./public/public.component";
+import {GlobalErrorComponent} from "./public/components/global-error/global-error.component";
 
 const routes: Routes = [
-  // {path: '', component: MainPageComponent},
-  // {path: 'login', component: LoginComponent},
-  // {path: 'registration', component: RegistrationComponent},
-  // {path: 'userInfo', component: UserPageComponent},
-  // {path: 'cart', component: CartPageComponent},
-  // {path: 'certificate/:id', component: CertificatePageComponent},
-  // {path: 'addCertificate', component: FormCertificateComponent},
-  // {path: 'updateCertificate/:id', component: FormCertificateComponent},
-  // {path: 'addTag', component: FormTagComponent},
-  // {path: 'error', component: GlobalErrorComponent}
-];
+  {
+    path: 'certificate',
+    component: PublicComponent,
+    loadChildren: () => import('./public/public.module').then(x => x.PublicModule)
+  }, {
+    path: "error", component: GlobalErrorComponent
+  },
+  {
+    path: 'auth', component: AuthComponent, loadChildren: () => import('./auth/auth.module').then(x => x.AuthModule)
+  }, {
+    path: 'form',
+    component: ItemFormsComponent,
+    loadChildren: () => import('./item-forms/item-forms-routing.module').then(x => x.ItemFormsRoutingModule)
+  }, {
+    path: 'user',
+    component: UserComponent,
+    loadChildren: () => import('./user/user-routing.module').then(x => x.UserRoutingModule)
+  }, {
+    path: '**', redirectTo: 'certificate'
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],

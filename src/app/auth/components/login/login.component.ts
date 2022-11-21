@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import { User } from 'src/app/models/user';
-import { UserService } from 'src/app/services/user.service';
-import {ErrorService} from "../../../services/error.service";
+import { User } from 'src/app/public/models/user';
+import { UserService } from 'src/app/public/services/user.service';
+import {AuthService} from "../../services/auth.service";
 
 
 @Component({
@@ -21,16 +21,16 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('loginForm') form: NgForm;
 
-  constructor(private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService) {
     this.message = "Please log in.";
-    this.userService.message.subscribe(flag => this.message = flag);
+    this.authService.message.subscribe(flag => this.message = flag);
   }
 
   ngOnInit(): void {
   }
 
   loginUser() {
-    this.userService.login(this.form.value).subscribe((result: User) => {
+    this.authService.login(this.form.value).subscribe((result: User) => {
 
         this.userService.authentificateUser(result);
         this.message = "Authentication was completed.";

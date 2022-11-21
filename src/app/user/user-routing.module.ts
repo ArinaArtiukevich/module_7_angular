@@ -5,12 +5,9 @@ import {UserComponent} from "./user.component";
 import {CartComponent} from "./components/cart/cart.component";
 
 const routes: Routes = [
-  {
-    path: 'user', component: UserComponent, children: [
       {path: 'info/:id', component: UserInfoComponent},
       {path: 'cart', component: CartComponent}
-    ]
-  }
+
 ];
 
 @NgModule({

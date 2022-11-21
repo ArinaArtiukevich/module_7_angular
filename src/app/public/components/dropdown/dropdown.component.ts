@@ -1,9 +1,9 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Tag} from "../../../models/tag";
+import {Tag} from "../../models/tag";
 import {Subscription} from "rxjs";
-import {TagService} from "../../../services/tag.service";
-import {ShareNavBarRequestService} from "../../../services/share-nav-bar-request.service";
-import {UserService} from "../../../services/user.service";
+import {TagService} from "../../services/tag.service";
+import {ShareNavBarRequestService} from "../../services/share-nav-bar-request.service";
+import {UserService} from "../../services/user.service";
 
 
 @Component({

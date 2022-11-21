@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from "@angular/core";
 import {Subscription} from "rxjs";
-import {Certificate} from "../../../models/certificate";
-import {CertificatesService} from "../../../services/certificates.service";
-import {ShareNavBarRequestService} from "../../../services/share-nav-bar-request.service";
-import {CartService} from "../../../services/cart.service";
-import {UserService} from "../../../services/user.service";
+import {Certificate} from "../../models/certificate";
+import {CertificatesService} from "../../services/certificates.service";
+import {ShareNavBarRequestService} from "../../services/share-nav-bar-request.service";
+
+import {UserService} from "../../services/user.service";
+import {CurrentUserService} from "../../../user/services/current-user.service";
 
 
 @Component({
@@ -25,15 +26,13 @@ export class CertificateComponent implements OnInit {
   private isCertificatesEnded: boolean;
   private readonly keyName = 'certificates'
   private readonly keyLikedName = 'likedCertificates';
-  readonly classLinkLikeImg = "/assets/favorite_black_24dp.svg";
-  readonly classLinkLikedImg = "/assets/favorite_border_black_24dp.svg";
   readonly labelAdd = "Add to Cart";
   readonly labelDelete = "Delete";
   isValid: boolean;
 
   constructor(private certificatesService: CertificatesService,
               private shareNavBarRequestService: ShareNavBarRequestService,
-              private cartService: CartService,
+              private cartService: CurrentUserService,
               private userService: UserService) {
     this.isCertificatesEnded = false;
     this.eventSubscription = this.shareNavBarRequestService.certificateName.subscribe((value) => {

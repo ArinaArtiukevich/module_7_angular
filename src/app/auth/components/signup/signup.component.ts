@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import {User} from "../../../models/user";
-import {UserService} from "../../../services/user.service";
+import {User} from "../../../public/models/user";
+import {UserService} from "../../../public/services/user.service";
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -26,9 +27,9 @@ export class SignupComponent implements OnInit {
 
   @ViewChild('signupForm') form: NgForm;
 
-  constructor(private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService) {
     this.message = "Please sign up.";
-    this.userService.message.subscribe(flag => this.message = flag);
+    this.authService.message.subscribe(flag => this.message = flag);
   }
 
   ngOnInit(): void {
@@ -39,7 +40,7 @@ export class SignupComponent implements OnInit {
   }
 
   signupUser() {
-    this.userService.signup(this.form.value).subscribe((result: User) => {
+    this.authService.signup(this.form.value).subscribe((result: User) => {
         this.userService.authentificateUser(result);
         this.message = "Registration was completed.";
       }, error => {

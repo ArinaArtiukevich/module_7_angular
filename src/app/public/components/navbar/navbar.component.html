@@ -34,7 +34,7 @@
     <th>
       <div class="authentication_links">
         <ul class="inline_list">
-          <li><a class="authentication_link" routerLink="/auth/signup">Sign Up</a></li>
+          <li><a class="authentication_link" routerLink="/auth/signup" *ngIf="!isLogged">Sign Up</a></li>
           <li><a class="authentication_link" routerLink="/auth/login" *ngIf="!isLogged; else logoutTemplate">Login</a>
           </li>
           <li>

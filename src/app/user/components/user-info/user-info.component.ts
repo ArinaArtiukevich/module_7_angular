@@ -1,12 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
-import {User} from "../../../models/user";
-import {UserService} from "../../../services/user.service";
-import {CartService} from "../../../services/cart.service";
-import {CertificatesService} from "../../../services/certificates.service";
-import {ErrorService} from "../../../services/error.service";
+import {User} from "../../../public/models/user";
+import {UserService} from "../../../public/services/user.service";
+import {CertificatesService} from "../../../public/services/certificates.service";
+import {ErrorService} from "../../../public/services/error.service";
 import {ActivatedRoute} from "@angular/router";
-import {UserRole} from "../../../models/enum/user-role.enum";
+import {CurrentUserService} from "../../services/current-user.service";
 
 
 @Component({
@@ -23,7 +22,7 @@ export class UserInfoComponent implements OnInit {
   routeSubscription: Subscription;
 
   constructor(private userService: UserService,
-              private cartService: CartService,
+              private cartService: CurrentUserService,
               private certificatesService: CertificatesService,
               private error: ErrorService,
               private activateRoute: ActivatedRoute,

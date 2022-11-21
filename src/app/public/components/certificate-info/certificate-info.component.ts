@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {Certificate} from "../../../models/certificate";
-import {CertificatesService} from "../../../services/certificates.service";
-import {CartService} from "../../../services/cart.service";
-import {ErrorService} from "../../../services/error.service";
-import {UserService} from "../../../services/user.service";
+import {Certificate} from "../../models/certificate";
+import {CertificatesService} from "../../services/certificates.service";
+import {ErrorService} from "../../services/error.service";
+import {UserService} from "../../services/user.service";
+import {CurrentUserService} from "../../../user/services/current-user.service";
 
 
 @Component({
@@ -27,7 +27,7 @@ export class CertificateInfoComponent implements OnInit {
 
   constructor(private activateRoute: ActivatedRoute,
               private certificateService: CertificatesService,
-              private cartService: CartService,
+              private cartService: CurrentUserService,
               private userService: UserService,
               private error: ErrorService,
   ) {
@@ -53,9 +53,6 @@ export class CertificateInfoComponent implements OnInit {
         this.isAdmin = true;
       }
     })
-    if (this.isValid && this.userService.isUserAdmin()) {
-      this.isAdmin = true;
-    }
   }
 
   addToCart(certificate: Certificate) {

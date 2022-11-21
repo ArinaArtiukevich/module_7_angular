@@ -1,10 +1,10 @@
 <div id="new_tag">
-  <form id="new_tag_form" (ngSubmit)="addTag($event)" enctype="multipart/form-data">
+  <form id="new_tag_form" enctype="multipart/form-data">
     <div class="container">
       <div class="head_container">
         <div class="head_text"><p>Add New Tag</p></div>
       </div>
-      <div id="new_tag_message" class="new_tag_message"></div>
+      <div id="new_tag_message" class="new_item_message"></div>
       <div class="border">
         <div class="input_fields">
           <div class="left_column">
@@ -29,7 +29,7 @@
               <button class="light_button" routerLink="/">Back</button>
             </li>
             <li>
-              <button type="submit" class="green_button" *ngIf="isAdmin">Save</button>
+              <button type="submit"  (click)="addTag($event)" class="green_button" *ngIf="isAdmin">Save</button>
             </li>
           </ul>
         </div>
